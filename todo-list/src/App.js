@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import 'firebase/compat/auth';
@@ -7,6 +8,7 @@ import './App.css';
 function App() {
   const [todos, setTodos] = useState([]);
   const [user, setUser] = useState(null);
+  const [count, setCount] = useState(0);
   const firebaseConfig = {
     apiKey: "AIzaSyCE3Dnvjt7v6nygHbXu_qBM6kZMQjX_2Is",
     authDomain: "hector-todo-list-firebase.firebaseapp.com",
@@ -48,9 +50,11 @@ function App() {
     firestore.collection('todos').add({
       description,
       completed: false,
-      user: firebase.auth().currentUser.uid
+      user: firebase.auth().currentUser.uid,
+      counter: count + 1
     });
     form.reset();
+    setCount(count + 1);
   }
 
   function toggleTodo(id, index) {
@@ -103,16 +107,23 @@ function App() {
           </form>
           <ul className='TodoList'>
             {todos.map((todo, index) => (
-              <li key={index}>
-                <input
-                  type="checkbox"
-                  checked={todo.completed}
-                  onChange={() => toggleTodo(todo.id,index)}
-                />
-                <span style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>
-                  {todo.description}
-                </span>
+              <li key={index} className="row no-gutters">
+                <div className="col-1">{todo.counter}.</div>
+                <div className="col-1">
+                  <input
+                    type="checkbox"
+                    checked={todo.completed}
+                    onChange={() => toggleTodo(todo.id,index)}
+                  />
+                </div>
+                <div className="col-2">
+                  <span style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>
+                    {todo.description}
+                  </span>
+                </div>
+                <div className="col-1">
                 <button onClick={() => deleteTodo(todo.id)}>Delete</button>
+                </div>
               </li>
             ))}
           </ul>
