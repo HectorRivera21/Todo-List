@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import Todo from './Components/todos';
 import firebase from 'firebase/compat/app';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import 'firebase/compat/firestore';
 import 'firebase/compat/auth';
 import './App.css';
+
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -81,7 +83,7 @@ function App() {
   function login() {
     firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider()).then((result) => {
       setUser(result.user);
-      firestore.collection('todos').where('user', '==', firebase.auth().currentUser.uid).onSnapshot((snapshot) => {
+      firestore.collection('todos').where('user', '==', firebase.auth().currentUser.uid).orderBy('counter','asc').onSnapshot((snapshot) => {
         const newTodos = snapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data()
@@ -105,28 +107,7 @@ function App() {
             <input type="text" name="description" />
             <button type="submit">Add Todo</button>
           </form>
-          <ul className='TodoList'>
-            {todos.map((todo, index) => (
-              <li key={index} className="row no-gutters">
-                <div className="col-1">{todo.counter}.</div>
-                <div className="col-1">
-                  <input
-                    type="checkbox"
-                    checked={todo.completed}
-                    onChange={() => toggleTodo(todo.id,index)}
-                  />
-                </div>
-                <div className="col-2">
-                  <span style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>
-                    {todo.description}
-                  </span>
-                </div>
-                <div className="col-1">
-                <button onClick={() => deleteTodo(todo.id)}>Delete</button>
-                </div>
-              </li>
-            ))}
-          </ul>
+          <Todo todos = {todos} deleteTodo= {deleteTodo} toggleTodo={toggleTodo}/>
         </div>
       ) : (
         <button onClick={login}>Sign in with Google</button>

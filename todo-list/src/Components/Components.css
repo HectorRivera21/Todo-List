@@ -1,0 +1,9 @@
+.TodoList li 
+{
+    list-style: none;
+}
+.col-auto button
+{
+    width: 80px;
+    padding-left: 10px;
+}
