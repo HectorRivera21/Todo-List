@@ -1,0 +1,7 @@
+{
+  "hosting": {
+    "site": "hector-todo-list-firebase",
+
+    "public": "build"
+  }
+}
