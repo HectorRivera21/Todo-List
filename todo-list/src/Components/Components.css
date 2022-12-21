@@ -1,3 +1,19 @@
+.vh-100{
+    background-color: #508bfc;
+}
+.card.shadow-2-strong
+{
+    border-radius: 1rem;
+}
+#google
+{
+    background-color: #dd4b39;
+}
+#titleLogin
+{
+    color: white;
+    font-weight: bold;
+}
 .TodoList li 
 {
     list-style: none;

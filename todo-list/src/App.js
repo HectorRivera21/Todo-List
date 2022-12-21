@@ -81,7 +81,7 @@ function App() {
     });
   }
 
-  function login() {
+  function Google_Login() {
     firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider()).then((result) => {
       setUser(result.user);
       firestore.collection('todos').where('user', '==', firebase.auth().currentUser.uid).orderBy('counter','asc').onSnapshot((snapshot) => {
@@ -111,9 +111,8 @@ function App() {
           <Todo todos = {todos} deleteTodo= {deleteTodo} toggleTodo={toggleTodo}/>
         </div>
       ) : (
-        <Login login = {login}/>
+        <Login Google_Login = {Google_Login}/>
       )}
-      
     </div>
   );
 }
