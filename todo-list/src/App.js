@@ -102,14 +102,14 @@ function App() {
   return (
     <div className="App">
       {user ? (
-        <div className='container'>
+        <section id="todoSection" class="vh-100 gradient-custom">
           <button onClick={logout}>Logout</button>
           <form onSubmit={handleSubmit}>
             <input type="text" name="description" />
             <button type="submit">Add Todo</button>
           </form>
           <Todo todos = {todos} deleteTodo= {deleteTodo} toggleTodo={toggleTodo}/>
-        </div>
+        </section>
       ) : (
         <Login Google_Login = {Google_Login}/>
       )}
