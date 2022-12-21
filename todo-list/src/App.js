@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Todo from './Components/todos';
+import Login from './Components/login';
 import firebase from 'firebase/compat/app';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'firebase/compat/firestore';
@@ -110,7 +111,7 @@ function App() {
           <Todo todos = {todos} deleteTodo= {deleteTodo} toggleTodo={toggleTodo}/>
         </div>
       ) : (
-        <button onClick={login}>Sign in with Google</button>
+        <Login login = {login}/>
       )}
       
     </div>
