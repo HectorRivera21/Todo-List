@@ -8,6 +8,7 @@ import 'firebase/compat/auth';
 import './App.css';
 
 
+
 function App() {
   const [todos, setTodos] = useState([]);
   const [user, setUser] = useState(null);
@@ -80,7 +81,6 @@ function App() {
       console.error("Error deleting todo: ", error);
     });
   }
-
   function Google_Login() {
     firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider()).then((result) => {
       setUser(result.user);
@@ -98,6 +98,7 @@ function App() {
       setUser(null);
     });
   }
+  
 
   return (
     <div className="App">
@@ -106,15 +107,16 @@ function App() {
           <div className='d-flex px-2 py-2' >
             <button className="btn btn-primary"onClick={logout}>Logout</button>
           </div>
-          <div className="container py-5 h-100">
+          <div className="container p-2 h-100">
             <div className="row d-flex justify-content-center align-items-center h-100">
               <div className="col col-xl-10">
 
                 <div className="card">
                   <div className="card-body p-5">
+                    <h1 className='todoTitle'>My Todo List</h1>
                     <form className="d-flex justify-content-center align-items-center mb-4" onSubmit={handleSubmit}>
                       <div className="form-outline flex-fill">
-                        <input type="text" id="form2" className="form-control" name="description" />
+                        <input type="text" id="form2" className="form-control" placeholder='add To-do...' name="description" />
                       </div>
                       <button type="submit" id="add" className="btn btn-info ms-2">Add Todo</button>
                     </form>

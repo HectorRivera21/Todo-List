@@ -1,5 +1,11 @@
 *{
   font-family: 'Comic Neue', cursive;
+  padding: 0;
+  margin: 0;
+}
+.todoTitle{
+  font-weight: bold;
+  padding-left: 30%;
 }
 
 .cascading-right {
@@ -9,6 +15,14 @@
   color: white;
   font-weight: bold;
 }
+#titleAdd
+{
+  color: white;
+  font-weight: bold;
+}
+.container h1{
+  padding-left: 28%;
+}
 input[type="checkbox"] {
   cursor: pointer;
 }
@@ -17,6 +31,7 @@ i{
 }
 
 #loginSection{
+  justify-content: center;
   background-color: #508bfc;
 }
 #todoSection
