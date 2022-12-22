@@ -102,7 +102,7 @@ function App() {
   return (
     <div className="App">
       {user ? (
-        <section id="todoSection" class="vh-100 gradient-custom">
+        <section id="todoSection" className="vh-100 gradient-custom">
           <button onClick={logout}>Logout</button>
           <form onSubmit={handleSubmit}>
             <input type="text" name="description" />

@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './Components.css';
+import { FaTimes } from "react-icons/fa";
 
 
 function Todo({todos, toggleTodo, deleteTodo})
@@ -9,7 +9,6 @@ function Todo({todos, toggleTodo, deleteTodo})
         <ul className='TodoList'>
             {todos.map((todo, index) => (
               <li key={index} className="row g-2">
-                <div className='col-auto'>{todo.counter}.</div>
                 <div className='col-auto'>
                   <input
                     type="checkbox"
@@ -23,7 +22,7 @@ function Todo({todos, toggleTodo, deleteTodo})
                   </span>
                 </div>
                 <div className='col-auto'>
-                  <button className="btn btn-danger" onClick={() => deleteTodo(todo.id)}>Delete</button>
+                  <i className="btn-danger" onClick={() => deleteTodo(todo.id)}><FaTimes /></i>
                 </div>
               </li>
             ))}
