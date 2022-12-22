@@ -51,6 +51,11 @@ function App() {
     event.preventDefault();
     const form = event.target;
     const description = form.elements.description.value;
+    if (description.trim() === '') {
+      // show an error message
+      alert('The description field cannot be empty');
+      return;
+    }
     firestore.collection('todos').add({
       description,
       completed: false,
