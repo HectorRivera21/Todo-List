@@ -46,13 +46,15 @@ function Login({Google_Login})
 								<h3 className="mb-5">Sign in</h3>
 								<form onSubmit={handleSubmit}>
 									<div className="form-outline mb-4">
-										<input type="email" id="typeEmailX-2" className="form-control form-control-lg" value={email} onChange={(event)=>setEmail(event.target.value)}/>
 										<label className="form-label" htmlFor="typeEmailX-2">Email</label>
+										<input type="email" id="typeEmailX-2" className="form-control form-control-lg" value={email} onChange={(event)=>setEmail(event.target.value)}/>
+										
 									</div>
 
 									<div className="form-outline mb-4">
-										<input type="password" id="typePasswordX-2" className="form-control form-control-lg" value={password} onChange={(event)=>setPassword(event.target.value)}/>
 										<label className="form-label" htmlFor="typePasswordX-2">Password</label>
+										<input type="password" id="typePasswordX-2" className="form-control form-control-lg" value={password} onChange={(event)=>setPassword(event.target.value)}/>
+										
 									</div>
 
 									

@@ -103,12 +103,27 @@ function App() {
     <div className="App">
       {user ? (
         <section id="todoSection" className="vh-100 gradient-custom">
-          <button onClick={logout}>Logout</button>
-          <form onSubmit={handleSubmit}>
-            <input type="text" name="description" />
-            <button type="submit">Add Todo</button>
-          </form>
-          <Todo todos = {todos} deleteTodo= {deleteTodo} toggleTodo={toggleTodo}/>
+          <div className='d-flex px-2 py-2' >
+            <button className="btn btn-primary"onClick={logout}>Logout</button>
+          </div>
+          <div className="container py-5 h-100">
+            <div className="row d-flex justify-content-center align-items-center h-100">
+              <div className="col col-xl-10">
+
+                <div className="card">
+                  <div className="card-body p-5">
+                    <form className="d-flex justify-content-center align-items-center mb-4" onSubmit={handleSubmit}>
+                      <div className="form-outline flex-fill">
+                        <input type="text" id="form2" className="form-control" name="description" />
+                      </div>
+                      <button type="submit" id="add" className="btn btn-info ms-2">Add Todo</button>
+                    </form>
+                    <Todo todos = {todos} deleteTodo= {deleteTodo} toggleTodo={toggleTodo}/>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
       ) : (
         <Login Google_Login = {Google_Login}/>

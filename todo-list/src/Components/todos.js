@@ -1,33 +1,38 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { FaTimes } from "react-icons/fa";
+import { FaTrashAlt } from "react-icons/fa";
 
 
 function Todo({todos, toggleTodo, deleteTodo})
 {
 
-    return(
-        <ul className='TodoList'>
-            {todos.map((todo, index) => (
-              <li key={index} className="row g-2">
-                <div className='col-auto'>
-                  <input
-                    type="checkbox"
-                    checked={todo.completed}
-                    onChange={() => toggleTodo(todo.id,index)}
-                  />
-                </div>
-                <div className='col-auto'>
-                  <span style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>
-                    {todo.description}
-                  </span>
-                </div>
-                <div className='col-auto'>
-                  <i className="btn-danger" onClick={() => deleteTodo(todo.id)}><FaTimes /></i>
-                </div>
-              </li>
-            ))}
-          </ul>
-          );
+  return(
+    <div>
+      <div>
+        <ul className="list-group mb-0">
+          {todos.map((todo, index) => (
+            <li key={index} className="list-group-item d-flex align-items-center border-0 mb-2 rounded">
+              <div className='col-auto'>
+                <input
+                  type="checkbox"
+                  checked={todo.completed}
+                  onChange={() => toggleTodo(todo.id,index)}
+                  className="form-check-input me-2"
+                />
+              </div>
+              <div className='col-auto'>
+                <span style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>
+                  {todo.description}
+                </span>
+              </div>
+              <div>
+                <i className="d-flex text-danger align-items-center px-4 rounded" onClick={() => deleteTodo(todo.id)}><FaTrashAlt /></i>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
 
 }
 export default Todo;

@@ -40,22 +40,21 @@ function SignUp ({onCancel})
                             <form onSubmit={handleSubmit}>
                                 {error && <p className="error">{error}</p>}
                                 <div className="form-outline mb-4">
-                                    <input type="name" id="FirstName" className="form-control form-control-lg" value={name} onChange={(event)=>setName(event.target.value)}/>
                                     <label className="form-label" htmlFor="typeEmailX-2">FirstName</label>
+                                    <input type="name" id="FirstName" className="form-control form-control-lg" value={name} onChange={(event)=>setName(event.target.value)}/>
                                 </div>
                                 <div className="form-outline mb-4">
-                                    
-                                    <input type="name" id="LastName" className="form-control form-control-lg"/>
                                     <label className="form-label" htmlFor="typeEmailX-2">LastName</label>
+                                    <input type="name" id="LastName" className="form-control form-control-lg"/>
                                 </div>
-                                <div className="form-outline mb-4">
-                                    <input type="email" id="typeEmailX-2" className="form-control form-control-lg" value={email} onChange={(event)=>setEmail(event.target.value)}/>
+                                <div className="form-outline mb-4"> 
                                     <label className="form-label" htmlFor="typeEmailX-2">Email</label>
+                                    <input type="email" id="typeEmailX-2" className="form-control form-control-lg" value={email} onChange={(event)=>setEmail(event.target.value)}/>
                                 </div>
 
                                 <div className="form-outline mb-4">
-                                    <input type="password" id="typePasswordX-2" className="form-control form-control-lg" value={password} onChange={(event)=>setPassword(event.target.value)}/>
                                     <label className="form-label" htmlFor="typePasswordX-2">Password</label>
+                                    <input type="password" id="typePasswordX-2" className="form-control form-control-lg" value={password} onChange={(event)=>setPassword(event.target.value)}/>
                                 </div>
 
                                 <button className="btn btn-primary mx-2 btn-lg btn-block" type="submit">Sign Up</button>
@@ -66,7 +65,6 @@ function SignUp ({onCancel})
             </div>
         </div>
     </section>
-
   )
 
 }

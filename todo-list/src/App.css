@@ -1,12 +1,21 @@
 *{
   font-family: 'Comic Neue', cursive;
 }
-.App {
-  text-align: center;
-}
+
 .cascading-right {
   margin-right: -50px;
 }
+#add{
+  color: white;
+  font-weight: bold;
+}
+input[type="checkbox"] {
+  cursor: pointer;
+}
+i{
+  cursor: pointer;
+}
+
 #loginSection{
   background-color: #508bfc;
 }
@@ -40,12 +49,6 @@
 {
   list-style: none;
 }
-.col-auto button
-{
-  width: 80px;
-  padding-left: 10px;
-}
-
 @media (max-width: 991.98px) {
   .cascading-right {
     margin-right: 0;
