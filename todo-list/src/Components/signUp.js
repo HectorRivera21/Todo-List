@@ -30,7 +30,7 @@ function SignUp ({onCancel})
   return(
     <section id="loginSection" className="vh-100">
         <div className="container py-5 h-100">
-            <h1 id='titleLogin'className='text-justify-center'>Sign Up Here</h1>
+            <h1 id='titleSignup'className='text-justify-center'>Sign Up Here</h1>
             <div className="row d-flex justify-content-center align-items-center h-100">
                 
                 <div className="col-12 col-md-8 col-lg-6 col-xl-5">
