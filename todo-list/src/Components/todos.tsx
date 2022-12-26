@@ -1,8 +1,23 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FaTrashAlt } from "react-icons/fa";
 
+interface Todos 
+{
+  id:string;
+  description: string;
+  completed: boolean;
+  user: string;
+  counter: number;
+}
 
-function Todo({todos, toggleTodo, deleteTodo})
+interface Props 
+{
+	todos: Todos[],
+  toggleTodo:(id:string, index: number)=>void ,
+  deleteTodo:(id:string)=>void
+}
+
+function Todo({todos, toggleTodo, deleteTodo}:Props)
 {
 
   return(

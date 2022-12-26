@@ -1,17 +1,21 @@
+import SignUp from './Signup';
 import firebase from 'firebase/compat/app';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { FaGoogle } from "react-icons/fa";
 import { useState } from 'react';
-import SignUp from './signUp';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-function Login({Google_Login}) 
+interface Props 
+{
+	Google_Login:()=>void;
+}
+function Login({Google_Login}:Props) 
 {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [showSignUp, setShowSignUp] = useState(false);
 	
 
-	function handleSubmit(event) {
+	function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
 		event.preventDefault();
 		// Validate email and password
 		if (!email || !password) {

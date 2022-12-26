@@ -1,7 +1,7 @@
 //component imports and state/effext
 import React, { useState, useEffect } from 'react';
-import Todo from './Components/todos';
-import Login from './Components/login';
+import Todo from './Components/Todos';
+import Login from './Components/Login';
 //firebase imports
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
@@ -45,7 +45,7 @@ function App() {
       if (user) {
         setUser(user);
         firestore.collection('todos').where('user', '==', user.uid).onSnapshot((snapshot) => {
-          const newTodos: Todo[] = snapshot.docs.map((doc) => ({
+          const newTodos: any = snapshot.docs.map((doc) => ({
             id: doc.id,
             ...doc.data()
           }));
@@ -61,8 +61,9 @@ function App() {
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const form = event.target;
-    const description = form.elements.description.value;
+    const form = event.target as HTMLFormElement;
+    const descriptionElement = form.getElementById('description') as HTMLInputElement;
+    const description = descriptionElement.value;
     if (description.trim() === '') {
       // show an error message
       alert('The description field cannot be empty');
@@ -71,14 +72,14 @@ function App() {
     firestore.collection('todos').add({
       description,
       completed: false,
-      user: firebase.auth().currentUser.uid,
+      user: firebase.auth().currentUser?.uid,
       counter: count + 1
     });
     form.reset();
     setCount(count + 1);
   }
 
-  function toggleTodo(id:string, index:number) {
+  function toggleTodo(id:string, index:number):void {
     firestore.collection('todos').doc(id).update({
       completed: !todos[index].completed
     });
@@ -91,18 +92,18 @@ function App() {
       })
     );
   }
-  function deleteTodo(id:string) {
+  function deleteTodo(id:string):void {
     firestore.collection('todos').doc(id).delete().then(() => {
       setTodos(todos.filter((todo) => todo.id !== id));
     }).catch((error) => {
       console.error("Error deleting todo: ", error);
     });
   }
-  function Google_Login() {
+  function Google_Login():void {
     firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider()).then((result) => {
       setUser(result.user);
-      firestore.collection('todos').where('user', '==', firebase.auth().currentUser.uid).orderBy('counter','asc').onSnapshot((snapshot) => {
-        const newTodos = snapshot.docs.map((doc) => ({
+      firestore.collection('todos').where('user', '==', firebase.auth().currentUser?.uid).orderBy('counter','asc').onSnapshot((snapshot) => {
+        const newTodos:any = snapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data()
         }));
@@ -145,7 +146,7 @@ function App() {
           </div>
         </section>
       ) : (
-        <Login Google_Login = {Google_Login}/>
+        <Login Google_Login={Google_Login}/>
       )}
     </div>
   );

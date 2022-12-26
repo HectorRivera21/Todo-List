@@ -1,13 +1,19 @@
 import { useState } from "react";
 import firebase from 'firebase/compat/app';
-function SignUp ({onCancel})
+
+interface Props 
+{
+	onCancel:()=>void;
+}
+
+function SignUp ({onCancel}:Props)
 {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
     const [error, setError] = useState(null);
 
-    function handleSubmit(event) {
+    function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
         if (!email || !password) {
 			alert('Email and password are required');
