@@ -1,19 +1,31 @@
+//component imports and state/effext
 import React, { useState, useEffect } from 'react';
 import Todo from './Components/todos';
 import Login from './Components/login';
+//firebase imports
 import firebase from 'firebase/compat/app';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import 'firebase/compat/firestore';
 import 'firebase/compat/auth';
+// styling sections
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+
+interface Todo 
+{
+  id:string;
+  description: string;
+  completed: boolean;
+  user: string;
+  counter: number;
+}
 
 
 
 function App() {
-  const [todos, setTodos] = useState([]);
-  const [user, setUser] = useState(null);
+  const [todos, setTodos] = useState<Todo[]>([]);
+  const [user, setUser] = useState<firebase.User | null>(null);
   const [count, setCount] = useState(0);
-  const firebaseConfig = {
+  const firebaseConfig: Record<string,string> = {
     apiKey: "AIzaSyCE3Dnvjt7v6nygHbXu_qBM6kZMQjX_2Is",
     authDomain: "hector-todo-list-firebase.firebaseapp.com",
     projectId: "hector-todo-list-firebase",
@@ -33,7 +45,7 @@ function App() {
       if (user) {
         setUser(user);
         firestore.collection('todos').where('user', '==', user.uid).onSnapshot((snapshot) => {
-          const newTodos = snapshot.docs.map((doc) => ({
+          const newTodos: Todo[] = snapshot.docs.map((doc) => ({
             id: doc.id,
             ...doc.data()
           }));
@@ -47,7 +59,7 @@ function App() {
     return () => unsubscribe();
   }, []);
 
-  function handleSubmit(event) {
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.target;
     const description = form.elements.description.value;
@@ -66,7 +78,7 @@ function App() {
     setCount(count + 1);
   }
 
-  function toggleTodo(id, index) {
+  function toggleTodo(id:string, index:number) {
     firestore.collection('todos').doc(id).update({
       completed: !todos[index].completed
     });
@@ -79,7 +91,7 @@ function App() {
       })
     );
   }
-  function deleteTodo(id) {
+  function deleteTodo(id:string) {
     firestore.collection('todos').doc(id).delete().then(() => {
       setTodos(todos.filter((todo) => todo.id !== id));
     }).catch((error) => {
