@@ -1,4 +1,4 @@
-//component imports and state/effext
+//component imports and state/effect
 import React, { useState, useEffect } from 'react';
 import Todo from './Components/Todos';
 import Login from './Components/Login';
