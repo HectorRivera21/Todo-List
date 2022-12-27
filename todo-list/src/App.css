@@ -55,6 +55,10 @@ i{
 {
   background-color: #dd4b39;
 }
+#titleLogin{
+  color: white;
+  font-weight: bold;
+}
 #titleSignup
 {
   color: white;
