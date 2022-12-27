@@ -7,7 +7,6 @@ interface Todos
   description: string;
   completed: boolean;
   user: string;
-  counter: number;
 }
 
 interface Props 

@@ -9,22 +9,16 @@ import 'firebase/compat/auth';
 // styling sections
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-
-interface Todo 
+interface Todos 
 {
   id:string;
   description: string;
   completed: boolean;
   user: string;
-  counter: number;
 }
-
-
-
 function App() {
-  const [todos, setTodos] = useState<Todo[]>([]);
+  const [todos, setTodos] = useState<Todos[]>([]);
   const [user, setUser] = useState<firebase.User | null>(null);
-  const [count, setCount] = useState(0);
   const firebaseConfig: Record<string,string> = {
     apiKey: "AIzaSyCE3Dnvjt7v6nygHbXu_qBM6kZMQjX_2Is",
     authDomain: "hector-todo-list-firebase.firebaseapp.com",
@@ -33,13 +27,10 @@ function App() {
     messagingSenderId: "464920494261",
     appId: "1:464920494261:web:0e05031c894f029ac2befc"
   };
-  
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
-  
   // Initialize Firestore
   const firestore = firebase.firestore();
-
   useEffect(() => {
     const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
       if (user) {
@@ -58,7 +49,6 @@ function App() {
 
     return () => unsubscribe();
   }, []);
-
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.target as HTMLFormElement;
@@ -73,10 +63,8 @@ function App() {
       description,
       completed: false,
       user: firebase.auth().currentUser?.uid,
-      counter: count + 1
     });
     form.reset();
-    setCount(count + 1);
   }
 
   function toggleTodo(id:string, index:number):void {
@@ -116,8 +104,6 @@ function App() {
       setUser(null);
     });
   }
-  
-
   return (
     <div className="App">
       {user ? (
@@ -151,5 +137,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
