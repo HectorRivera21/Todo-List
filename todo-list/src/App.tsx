@@ -52,7 +52,7 @@ function App() {
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.target as HTMLFormElement;
-    const descriptionElement = form.getElementById('description') as HTMLInputElement;
+    const descriptionElement = document.getElementById('form2') as HTMLInputElement;
     const description = descriptionElement.value;
     if (description.trim() === '') {
       // show an error message
