@@ -1,7 +1,7 @@
 //component imports and state/effect
 import React, { useState, useEffect } from 'react';
-import Todo from './Components/Todos';
-import Login from './Components/Login';
+import Todo from './Components/todos';
+import Login from './Components/login';
 //firebase imports
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';

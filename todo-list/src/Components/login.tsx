@@ -1,4 +1,4 @@
-import SignUp from './Signup';
+import SignUp from './signUp';
 import firebase from 'firebase/compat/app';
 import { FaGoogle } from "react-icons/fa";
 import { useState } from 'react';
